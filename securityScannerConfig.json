@@ -1,0 +1,68 @@
+{
+  "dependencyScanner": {
+    "db": ["Sonatype"],
+    "vulnerabilityFilter": {
+      "cvssScore": "none",
+      "cvssVector": ""
+    }
+  },
+
+  "injectionsScanner": [
+
+    {
+        "pattern": "(?<![\\w])eval\\(",
+        "name": "eval",
+        "message": "eval Method found - please use ast.literal_eval instead",
+        "files": [],
+        "kinds": ["src", "ast"]
+      },
+      {
+        "pattern": "(SELECT|INSERT|UPDATE|DELETE|DROP|EXEC)\\s+.*(['\"].*['\"].*|.*\\+.*|.*\\{\\d+\\}.*)",
+        "name": "sqlPattern",
+        "message": "SqlCommand with string concatenation detected",
+        "files": [".py"],
+        "kinds": ["src"]
+      }
+  ],
+  "secretDetectionScanner":[
+    {
+      "pattern": "[\"\\']?[A-Za-z0-9]{32,}[\"\\']?",
+      "name": "API_KEY",
+      "message": "API KEY detected - please use Environment Variables or Secret Manager to store secrets",
+      "files": [],
+      "kinds": ["src"]
+    },
+    {
+      "pattern": "[\"\\']?password[\"\\']?\\s*[:=]\\s*[\"\\'][^\"\\']{8,}[\"\\']",
+      "name": "PASSWORD",
+      "message": "PASSWORD detected - please use Environment Variables or Secret Manager to store secrets",
+      "files": [],
+      "kinds": ["src"]
+    },
+    {
+      "pattern": "[\"\\']?secret[\"\\']?\\s*[:=]\\s*[\"\\'][^\"\\']{8,}[\"\\']",
+      "name": "SECRET",
+      "message": "SECRET detected - please use Environment Variables or Secret Manager to store secrets",
+      "files": [],
+      "kinds": ["src"]
+    },
+    {
+      "pattern": "-----BEGIN (EC|RSA|DSA|PGP|OPENSSH) PRIVATE KEY-----",
+      "name": "PRIVAT KEY",
+      "message": "PRIVAT KEY detected - please use Environment Variables or Secret Manager to store secrets",
+      "files": [],
+      "kinds": ["src"]
+    }      
+  ],
+  "XSS_ExampleScanner":  [
+      {
+        "pattern": "^\\s*html_content\\s*=\\s*f\\s*\".*\\<div\\>.*\".*",
+        "name": "XSS",
+        "message": "Crosside Scripting detected",
+        "files": [],
+        "kinds": ["src"]
+      }  
+
+    ]
+  
+}
