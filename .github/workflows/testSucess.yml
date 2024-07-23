@@ -1,4 +1,4 @@
-name: TestCi
+name: ScannerSucess
 
 on:
   push:
