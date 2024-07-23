@@ -1,4 +1,4 @@
-name: ScannerSucess
+name: ScannerSuccess
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  ScannerSucess:
+  ScannerSuccess:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
