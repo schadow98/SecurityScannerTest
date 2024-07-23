@@ -1,0 +1,28 @@
+name: TestCi
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  CodeScanner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: SecurityScanner
+        uses: schadow98/Schadow-Security-Scanner@main  
+        with:
+          path: ./sucess
+          configFile: ./securityScannerConfig.json
+          logDir: ./logs_success
+  
+      - name: Upload logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: SecurityScanner
+          path: logs_success

@@ -16,3 +16,13 @@ jobs:
 
       - name: SecurityScanner
         uses: schadow98/Schadow-Security-Scanner@main  
+        with:
+          path: ./failure
+          configFile: ./securityScannerConfig.json
+          logDir: ./logs_failure
+  
+      - name: Upload logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: SecurityScanner
+          path: ./logs_failure

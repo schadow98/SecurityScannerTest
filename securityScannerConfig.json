@@ -53,16 +53,6 @@
       "files": [],
       "kinds": ["src"]
     }      
-  ],
-  "XSS_ExampleScanner":  [
-      {
-        "pattern": "^\\s*html_content\\s*=\\s*f\\s*\".*\\<div\\>.*\".*",
-        "name": "XSS",
-        "message": "Crosside Scripting detected",
-        "files": [],
-        "kinds": ["src"]
-      }  
-
-    ]
+  ]
   
 }
