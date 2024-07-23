@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  CodeScanner:
+  ScannerSucess:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,6 +20,7 @@ jobs:
           path: ./sucess
           configFile: ./securityScannerConfig.json
           logDir: ./logs_success
+          requirementsFile: ./sucess/requirements.txt
   
       - name: Upload logs
         uses: actions/upload-artifact@v4
