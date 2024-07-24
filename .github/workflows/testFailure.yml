@@ -6,11 +6,19 @@ on:
   pull_request:
     branches: [ main ]
   workflow_dispatch:
-
+    inputs:
+      customId:
+        description: 'run identifier'
+        required: false
+        default: "No customId set"
+  
 jobs:
   ScannerFailure:
     runs-on: ubuntu-latest
     steps:
+      - name: ${{github.event.inputs.customId}}
+        run: echo run identifier ${{ inputs.customId }}
+
       - name: Checkout
         uses: actions/checkout@v4
 
