@@ -11,7 +11,6 @@ on:
       customId:
         description: 'run identifier'
         required: false
-        default: "No customId set"
   
 jobs:
   ScannerFailure:
