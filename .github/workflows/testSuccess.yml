@@ -1,4 +1,5 @@
 name: ScannerSuccess
+run-name: ScannerSuccess [${{ inputs.customId && inputs.customId || 'N/A' }}]
 
 on:
   push:

@@ -1,4 +1,5 @@
 name: ScannerFailure
+run-name: ScannerFailure [${{ inputs.customId && inputs.customId || 'N/A' }}]
 
 on:
   push:
